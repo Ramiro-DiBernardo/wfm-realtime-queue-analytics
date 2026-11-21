@@ -1,0 +1,14 @@
+queue,weekday,hour,weeks_observed,weeks_below_target,avg_service_level
+Professionals - Chat,Mon,6,3,3,0.477
+Professionals - Chat,Mon,9,3,3,0.547
+Professionals - Voice,Mon,6,3,3,0.56
+Payments - Chat,Mon,9,3,3,0.564
+Facilities - Voice,Mon,8,3,3,0.598
+Facilities - Voice,Sat,11,4,4,0.609
+Professionals - Voice,Wed,12,4,4,0.621
+Professionals - Voice,Sat,6,4,4,0.622
+Professionals - Chat,Sun,15,4,3,0.705
+Payments - Chat,Wed,10,4,3,0.727
+Facilities - Voice,Sun,10,4,4,0.731
+Professionals - Voice,Fri,16,4,3,0.731
+Professionals - Voice,Fri,8,4,3,0.742

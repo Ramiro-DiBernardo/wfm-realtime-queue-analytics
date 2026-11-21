@@ -1,0 +1,5 @@
+queue,staffed_hours,surplus_hours,shortfall_hours,surplus_share,surplus_cost_usd,abandons_when_short
+Facilities - Voice,3376.0,718.0,276.0,0.213,10056.0,804
+Payments - Chat,2596.0,477.0,158.0,0.184,6671.0,608
+Professionals - Chat,4935.0,838.0,166.0,0.17,11732.0,1662
+Professionals - Voice,5215.0,949.0,214.0,0.182,13279.0,991

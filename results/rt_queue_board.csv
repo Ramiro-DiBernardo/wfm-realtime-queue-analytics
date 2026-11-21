@@ -1,0 +1,5 @@
+queue,as_of,offered_now,forecast_now,sl_now,sl_last_hour,abandon_last_hour,volume_vs_forecast_1h,staffed_agents,required_agents,staffing_gap,rag_status,recommended_lever
+Professionals - Voice,2026-10-20 15:00,45,17.0,0.0,0.136,0.227,0.294,13,26,-13,Red,"Unplanned volume: pull cross-skilled agents, move off-phone work, offer voluntary OT"
+Facilities - Voice,2026-10-20 15:00,12,8.0,0.417,0.222,0.185,-0.069,8,10,-2,Red,"Under-staffed vs plan: cancel off-phone activities (meetings, coaching), check absences"
+Payments - Chat,2026-10-20 15:00,10,7.0,0.8,0.794,0.088,0.259,5,5,0,Green,No action
+Professionals - Chat,2026-10-20 15:00,24,25.0,0.958,0.532,0.095,0.156,12,9,3,Green,Surplus capacity: release to training / back-office or lend to another queue
