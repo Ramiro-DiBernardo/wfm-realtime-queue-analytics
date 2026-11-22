@@ -43,12 +43,15 @@ Full write-up: [business review](docs/weekly-business-review.md) · [playbook](d
 
 [`apps-script/rta_tools.gs`](apps-script/rta_tools.gs) adds an **RTA tools** menu: *Check queues now* (logs red and amber queues with the lever), *Next interval*, and **Start replay**, a time-driven trigger that moves the board one interval per minute so a past day can be watched as if it were live.
 
-Tested in Google Sheets: *Check queues now* at 20 Oct 15:00 logs exactly the two red queues to the Alert Log:
+Tested in Google Sheets: *Check queues now* at 20 Oct 15:00 logs exactly the two red queues, and *Next interval* keeps stepping through the night and logging every red or amber queue with its lever:
 
-| Interval | Queue | Status | SL now | Gap | Recommended lever |
-|---|---|---|---:|---:|---|
-| 2026-10-20 15:00 | Professionals - Voice | Red | 0% | −13 | Unplanned volume: pull cross-skilled agents, move off-phone work, offer OT |
-| 2026-10-20 15:00 | Facilities - Voice | Red | 42% | −2 | Under-staffed: cancel off-phone activities, check absences |
+![Alert Log in Google Sheets](docs/img/google_sheets_alert_log.png)
+
+| Daily SLA | Agent Audit |
+|---|---|
+| ![Daily SLA](docs/img/google_sheets_daily_sla.png) | ![Agent audit](docs/img/google_sheets_agent_audit.png) |
+
+The Google Sheets test also surfaced a gap in the lever rules: an **amber queue that was already under-staffed** got "No action". It now gets "Slipping and under-staffed: cancel off-phone work before it turns red", in both the board formula and the SQL.
 
 The formulas were checked in Google Sheets and by recalculating the workbook in Excel: for 20 Oct 15:00 the board returns the same values as `sql/01_realtime_queue_board.sql` (Professionals - Voice: 45 offered vs 17 forecast, gap −13, Red, "pull cross-skilled agents"; Professionals - Chat: Green with +3 surplus).
 

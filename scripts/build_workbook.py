@@ -138,8 +138,9 @@ for i, q in enumerate(QUEUES):
     lb[f"K{r}"] = f'=IF(B{r}=0,"No volume",IF(E{r}>=0.8,"Green",IF(E{r}>=0.65,"Amber","Red")))'
     lb[f"L{r}"] = (f'=IF(AND(K{r}="Red",J{r}<0,D{r}>0.2),"Unplanned volume: pull cross-skilled agents, move off-phone work, offer OT",'
                    f'IF(AND(K{r}="Red",J{r}<0),"Under-staffed: cancel off-phone activities, check absences",'
+                   f'IF(AND(K{r}="Amber",J{r}<0),"Slipping and under-staffed: cancel off-phone work before it turns red",'
                    f'IF(AND(OR(K{r}="Red",K{r}="Amber"),J{r}>=0),"Staffed to need but missing SL: audit AHT, holds, agent states",'
-                   f'IF(AND(K{r}="Green",J{r}>=3),"Surplus: release to training / lend agents to a red queue","No action"))))')
+                   f'IF(AND(K{r}="Green",J{r}>=3),"Surplus: release to training / lend agents to a red queue","No action")))))')
     for c in "DEFG":
         lb[f"{c}{r}"].number_format = "0.0%"
     lb[f"D{r}"].number_format = "+0%;-0%;0%"
@@ -249,6 +250,8 @@ for c in ("A",):
         aa[f"{c}{end + k}"].font = Font(bold=True)
 for j in range(1, 18):
     aa.column_dimensions[get_column_letter(j)].width = 11
+aa.column_dimensions["A"].width = 30
+aa.column_dimensions["B"].width = 15
 aa.column_dimensions["P"].width = 18
 aa.freeze_panes = "B4"
 

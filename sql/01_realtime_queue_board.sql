@@ -41,6 +41,8 @@ SELECT
             THEN 'Unplanned volume: pull cross-skilled agents, move off-phone work, offer voluntary OT'
         WHEN l.rag_status = 'Red'   AND l.staffing_gap < 0
             THEN 'Under-staffed vs plan: cancel off-phone activities (meetings, coaching), check absences'
+        WHEN l.rag_status = 'Amber' AND l.staffing_gap < 0
+            THEN 'Slipping and under-staffed: cancel off-phone work before it turns red'
         WHEN l.rag_status IN ('Red', 'Amber') AND l.staffing_gap >= 0
             THEN 'Staffed to need but missing SL: audit AHT, holds and agent states'
         WHEN l.rag_status = 'Green' AND l.staffing_gap >= 3

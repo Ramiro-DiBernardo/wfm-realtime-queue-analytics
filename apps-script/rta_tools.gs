@@ -5,7 +5,7 @@
  * then Extensions > Apps Script, paste this file, save, reload the sheet. A "RTA tools" menu appears.
  *
  * - Check queues now     logs every Red / Amber queue on the Live Board to the Alert Log tab
- * - Next interval        moves the board forward 15 minutes (rolls over to the next day)
+ * - Next interval        moves the board forward 15 minutes (rolls over to the next day) and checks queues
  * - Start replay         time-driven trigger: every minute, advance one interval and check queues,
  *                        so a past day can be "replayed" as if it were live
  * - Stop replay          removes the trigger
@@ -54,8 +54,14 @@ function checkQueues() {
   return alerts;
 }
 
-/** Moves the board 15 minutes forward, rolling over to the next date in the Lists tab. */
+/** Menu action: move 15 minutes forward and check the queues of the new interval. */
 function nextInterval() {
+  advanceInterval();
+  checkQueues();
+}
+
+/** Moves the board 15 minutes forward, rolling over to the next date in the Lists tab. */
+function advanceInterval() {
   const ss = SpreadsheetApp.getActive();
   const board = ss.getSheetByName(BOARD);
   const lists = ss.getSheetByName(LISTS);
@@ -76,7 +82,6 @@ function nextInterval() {
 /** Called by the replay trigger. */
 function replayTick() {
   nextInterval();
-  checkQueues();
 }
 
 function startReplay() {
