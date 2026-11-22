@@ -28,6 +28,10 @@ Full write-up: [business review](docs/weekly-business-review.md) · [playbook](d
 
 [`sheets/RTA_Queue_Tracker.xlsx`](sheets/RTA_Queue_Tracker.xlsx) is built to be imported into Google Sheets. Every number on the board is a formula (`SUMIFS`, `IF`, `DATEVALUE`, conditional formatting) over the interval data, so it works as a template for live data too.
 
+![Live Board in Google Sheets](docs/img/google_sheets_live_board.png)
+
+*The Live Board after importing into Google Sheets, at 15:00 on 20 Oct: voice is red during the outage rebound while Professionals - Chat has 3 agents of surplus to lend.*
+
 | Tab | What it does |
 |---|---|
 | **Live Board** | Pick a date and interval: per queue offered vs forecast, SL now and last hour, abandon rate, staffed vs Erlang C requirement, **status (green / amber / red) and the recommended lever**; plus SL by hour for the selected day |
@@ -39,7 +43,7 @@ Full write-up: [business review](docs/weekly-business-review.md) · [playbook](d
 
 [`apps-script/rta_tools.gs`](apps-script/rta_tools.gs) adds an **RTA tools** menu: *Check queues now* (logs red and amber queues with the lever), *Next interval*, and **Start replay**, a time-driven trigger that moves the board one interval per minute so a past day can be watched as if it were live.
 
-The formulas were checked by recalculating the workbook in Excel: for 20 Oct 15:00 the board returns the same values as `sql/01_realtime_queue_board.sql` (Professionals - Voice: 45 offered vs 17 forecast, gap −13, Red, "pull cross-skilled agents"; Professionals - Chat: Green with +3 surplus).
+The formulas were checked in Google Sheets and by recalculating the workbook in Excel: for 20 Oct 15:00 the board returns the same values as `sql/01_realtime_queue_board.sql` (Professionals - Voice: 45 offered vs 17 forecast, gap −13, Red, "pull cross-skilled agents"; Professionals - Chat: Green with +3 surplus).
 
 ## SQL
 
